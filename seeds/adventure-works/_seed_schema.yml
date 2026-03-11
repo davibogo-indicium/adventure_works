@@ -1,1 +1,181 @@
 version: 2
+
+seeds:
+  - name: SalesOrderHeader
+    config:
+      quote_columns: false
+      column_types:
+        BusinessEntityID: string
+        SalesOrderID: string
+        ShipMethodId: string
+        RevisionNumber: string
+        OrderDate: string
+        DueDate: string
+        ShipDate: string
+        Status: string
+        OnlineOrderFlag: string
+        SalesOrderNumber: string
+        PurchaseOrderNumber: string
+        AccountNumber: string
+        TerritoryID: string
+        BillToAddressID: string
+        ShipToAddressID: string
+        CreditCardID: string
+        CreditCardApprovalCode: string
+        CurrencyRateID: string
+        SubTotal: string
+        TaxAmt: string
+        Freight: string
+        TotalDue: string
+        Comment: string
+        rowguid: string
+        ModifiedDate: string
+
+  - name: SalesOrderDetail
+    config: 
+      quote_columns: false
+      column_types:
+        BusinessEntityID: string
+        SalesOrderID: string
+        SalesOrderDetailID: string
+        CarrierTrackingNumber: string
+        OrderQty: string
+        ProductID: string
+        SpecialOfferID: string
+        UnitPrice: string
+        UnitPriceDiscount: string
+        LineTotal: string
+        rowguid: string
+        ModifiedDate: string
+
+  - name: Customer
+    config: 
+      quote_columns: false
+      column_types:
+        CustomerID: string
+        PersonID: string
+        StoreID: string
+        TerritoryID: string
+        AccountNumber: string
+        rowguid: string
+        ModifiedDate: string
+
+  - name: Person
+    config: 
+      quote_columns: false
+      column_types:
+        BusinessEntityID: string
+        PersonType: string
+        NameStyle: string
+        Title: string
+        FirstName: string
+        LastName: string
+        Suffix: string
+        EmailPromotion: string
+        AdditionalContactInfo: string
+        Demographics: string
+        rowguid: string
+        ModifiedDate: string
+
+  - name: CreditCard
+    config: 
+      quote_columns: false
+      column_types:
+        CreditCardID: string
+        CardType: string
+        CardNumber: string
+        ExpMonth: string
+        ExpYear: string
+        ModifiedDate: string
+      
+  - name: Address
+    config: 
+      quote_columns: false
+      column_types:
+        AddressID: string
+        AddressLine1: string
+        AddressLine2: string
+        City: string
+        StateProvinceID: string
+        PostalCode: string
+        SpatialLocation: string
+        rowguid: string
+        ModifiedDate: string
+      
+  - name: StateProvince
+    config: 
+      quote_columns: false
+      column_types:
+        StateProvinceID: string
+        StateProvinceCode: string
+        CountryRegionCode: string
+        IsOnlyStateProvinceFlag: string
+        Name: string
+        TerritoryID: string
+        rowguid: string
+        ModifiedDate: string
+      
+  - name: CountryRegion
+    config: 
+      quote_columns: false
+      column_types:
+        CountryRegionCode: string
+        Name: string
+        ModifiedDate: string
+      
+  - name: SalesOrderHeaderSalesReason
+    config: 
+      quote_columns: false
+      column_types:
+        BusinessEntityID: string
+        SalesOrderID: string
+        SalesReasonID: string
+        ModifiedDate: string
+      
+  - name: SalesReason
+    config: 
+      quote_columns: false
+      column_types:
+        SalesReasonID: string
+        Name: string
+        ReasonType: string
+        ModifiedDate: string
+      
+  - name: SpecialOfferProduct
+    config: 
+      quote_columns: false
+      column_types:
+        SpecialOfferID: string
+        ProducID: string
+        rowguid: string
+        ModifiedDate: string
+      
+  - name: Product
+    config: 
+      quote_columns: false
+      column_types:
+        ProductID: string
+        Name: string
+        ProductNumber: string
+        MakeFlag: string
+        FinishedGoodsFlag: string
+        Color: string
+        SafetyStockLevel: string
+        ReorderPoint: string
+        StanderdCost: string
+        ListPrice: string
+        Size: string
+        SizeUnitMeasureCode: string
+        WeightUnitMeasureCode: string
+        Weight: string
+        DaysToManufacture: string
+        ProductLine: string
+        Class: string
+        Style: string
+        ProductSubcategoryID: string
+        ProductModelID: string
+        SellStartDate: string
+        SellEndDate: string
+        DiscontinuedDate: string
+        rowguid: string
+        ModifiedDate: string

@@ -1,0 +1,38 @@
+sources:
+  - name: crm
+    description: Sistema CRM da Adventure Works
+    schema: crm_adventure_works
+
+    tables:
+      - name: SalesOrderDetail
+        description: Table with sales orders products details for each sale order
+
+      - name: SalesOrderHeader
+        description: Table with sales orders main data
+
+      - name: Customer
+        description: Table with centralized customer data
+
+      - name: Person
+        description: Table with details of customer person
+
+      - name: CreditCard
+        description: Table with details of person's credit cards
+
+      - name: Address
+        description: Table with details of sales orders addresses
+
+      - name: StateProvince
+        description: Table with details of addresses state
+
+      - name: CountryRegion
+        description: Table with details of state's country
+
+      - name: SalesOrderHeaderSalesReason
+        description: Table that make many-to-many relationship for sales reasons
+
+      - name: SalesReason
+        description: Table with sales orders reasons
+
+      - name: Product
+        description: Table with sales orders products
