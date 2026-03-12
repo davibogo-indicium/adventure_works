@@ -6,7 +6,7 @@ with
 
     , rename as (
         select
-            cast(salesreasonid as int) as pk_sales__reason
+            cast(salesreasonid as int) as pk_sales_reason
             , name as sales_reason_name
         from source_sales_reason
 

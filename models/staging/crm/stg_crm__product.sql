@@ -7,7 +7,7 @@ with
     , rename as (
         select
             cast(productid as int) as pk_product
-            , cast(name as int) as product_name
+            , name as product_name
         from source_product
     )
 

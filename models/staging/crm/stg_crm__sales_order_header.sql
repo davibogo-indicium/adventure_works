@@ -8,6 +8,7 @@ with
         select
             cast(salesorderid as int) as pk_sales_order_header
             , cast(customerid as int) as fk_customer
+            , cast(creditcardid as int) as fk_card
             , status as sales_order_status
         from source_sales_order_header
     )
