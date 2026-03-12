@@ -1,13 +1,13 @@
 with
     source_sales_reason as (
         select *
-        from {{ source('crm', 'SalesReason') }}
+        from {{ source('crm', 'sales_salesreason') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(SalesReasonID as int) as pk_sales__reason
-            , Name as sales_reason_name
+            cast(salesreasonid as int) as pk_sales__reason
+            , name as sales_reason_name
         from source_sales_reason
 
     )

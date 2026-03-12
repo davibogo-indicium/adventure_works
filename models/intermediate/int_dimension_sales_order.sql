@@ -41,7 +41,9 @@ with
 
     , sales_order_enriched as (
         select
-            sales_orders_headers.pk_sales_order_header as pk_order_details
+            {{ dbt_utils.generate_surrogate_key(['sales_orders_headers.pk_sales_order_header'
+                , 'products.pk_product', 'customers.pk_customer', 'people.pk_person', 'cards.pk_card'
+                , 'sales_reason.pk_sales_reason']) }} as pk_order_details
             , people.person_name as client_name
             , products.product_name
             , cards.card_type

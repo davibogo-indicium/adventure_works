@@ -1,17 +1,17 @@
 with
     source_sales_order_detail as (
         select *
-        from {{ source('crm', 'SalesOrderDetail') }}
+        from {{ source('crm', 'sales_salesorderdetail') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(SalesOrderDetailID as int) as pk_sales_order_detail
-            , cast(BusinessEntityID || '-' || SalesOrderID as int) as fk_sales_order_header
-            , cast(ProductID as int) as fk_product
-            , cast(OrderQty as int) as item_quantity
-            , cast(UnitPriceDiscount as float) as item_price_discount
-            , cast(UnitPrice as float) as item_price
+            cast(salesorderdetailid as int) as pk_sales_order_detail
+            , cast(salesorderid as int) as fk_sales_order_header
+            , cast(productid as int) as fk_product
+            , cast(orderqty as int) as item_quantity
+            , cast(unitpricediscount as float) as item_price_discount
+            , cast(unitprice as float) as item_price
         from source_sales_order_detail
     )
 

@@ -1,13 +1,13 @@
 with
     source_person as (
         select *
-        from {{ source('crm', 'Person') }}
+        from {{ source('crm', 'person_person') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(PersonsID as int) as pk_person
-            , FirstName || ' ' MiddleName || ' ' || LastName as person_name
+            cast(businessentityid as int) as pk_person
+            , firstname || ' ' || middlename || ' ' || lastname as person_name
         from source_person
     )
 

@@ -1,13 +1,14 @@
 with
     source_address as (
         select *
-        from {{ source('crm', 'Address') }}
+        from {{ source('crm', 'person_address') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(AddressID as int) as pk_address
-            , cast(StateProvinceID as int) as fk_state
+            cast(addressid as int) as pk_address
+            , cast(stateprovinceid as int) as fk_state
+            , city as city_name
         from source_address
     )
 
