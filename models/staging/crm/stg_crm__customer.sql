@@ -1,13 +1,13 @@
 with
     source_customer as (
         select *
-        from {{ source('crm', 'Customer') }}
+        from {{ source('crm', 'sales_customer') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(CustomerID as int) as pk_customer
-            , cast(PersonID as int) as fk_person
+            cast(customerid as int) as pk_customer
+            , cast(personid as int) as fk_person
         from source_customer
     )
 

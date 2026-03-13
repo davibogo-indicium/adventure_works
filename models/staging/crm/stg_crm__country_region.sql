@@ -1,13 +1,13 @@
 with
     source_country_region as (
         select *
-        from {{ source('crm', 'CountryRegion') }}
+        from {{ source('crm', 'person_countryregion') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(CountryRegionCode as int) as pk_country
-            , Name as country_name
+            cast(countryregioncode as int) as pk_country
+            , name as country_name
         from source_country_region
     )
 

@@ -1,13 +1,15 @@
 with
     source_sales_order_header as (
         select *
-        from {{ source('crm', 'SalesOrderHeader') }}
+        from {{ source('crm', 'sales_salesorderheader') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(BusinessEntityID || '-' || SalesOrderID as int) as pk_sales_order
-            , cast(BusinessEntityID as int) as fk_customer
+            cast(salesorderid as int) as pk_sales_order_header
+            , cast(customerid as int) as fk_customer
+            , cast(creditcardid as int) as fk_card
+            , status as sales_order_status
         from source_sales_order_header
     )
 

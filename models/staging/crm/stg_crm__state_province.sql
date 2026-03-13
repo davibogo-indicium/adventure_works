@@ -1,14 +1,14 @@
 with
     source_state_province as (
         select *
-        from {{ source('crm', 'StateProvince') }}
+        from {{ source('crm', 'person_stateprovince') }}
     )
 
-    rename as (
+    , rename as (
         select
-            cast(StateProvinceID as int) as pk_state
-            , cast(CountryRegionCode as int) as fk_country
-            , Name as state_name
+            cast(stateprovinceid as int) as pk_state
+            , countryregioncode as fk_country
+            , name as state_name
         from source_state_province
     )
 
