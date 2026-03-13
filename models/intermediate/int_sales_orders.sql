@@ -39,16 +39,27 @@ with
         from {{ ref('stg_crm__credit_card') }}
     )
 
+    , addresses as (
+        select *
+        from {{ ref('stg_crm__address') }}
+    )
+
     , sales_order_enriched as (
         select
             {{ dbt_utils.generate_surrogate_key(['sales_orders_headers.pk_sales_order_header'
                 , 'products.pk_product', 'customers.pk_customer', 'people.pk_person', 'cards.pk_card'
-                , 'sales_reasons.pk_sales_reason']) }} as pk_order_details
+                , 'sales_reasons.pk_sales_reason']) }} as sk_sales_order_detail
             , people.person_name as client_name
             , products.product_name
             , cards.card_type
             , sales_reasons.sales_reason_name
             , sales_orders_headers.sales_order_status
+            , sales_orders_headers.pk_sales_order_header
+            , sales_orders_headers.fk_address
+            , sales_orders_headers.sales_order_dt
+            , sales_orders_details.item_price
+            , sales_orders_details.item_price_discount
+            , sales_orders_details.item_quantity
         from sales_orders_headers
         left join sales_orders_details on sales_orders_details.fk_sales_order_header = sales_orders_headers.pk_sales_order_header
         left join products on sales_orders_details.fk_product = products.pk_product
