@@ -1,38 +1,38 @@
 sources:
   - name: crm
     description: Adventure Works CRM system
-    schema: raw_adventure_works
+    schema: raw
 
     tables:
-      - name: sales_salesorderdetail
+      - name: raw__sales_salesorderdetail
         description: Table with sales orders products details for each sale order
 
-      - name: sales_salesorderheader
+      - name: raw__sales_salesorderheader
         description: Table with sales orders main data
 
-      - name: sales_customer
+      - name: raw__sales_customer
         description: Table with centralized customer data
 
-      - name: person_person
+      - name: raw__person_person
         description: Table with details of customer person
 
-      - name: sales_creditcard
+      - name: raw__sales_creditcard
         description: Table with details of person's credit cards
 
-      - name: person_address
+      - name: raw__person_address
         description: Table with details of sales orders addresses
 
-      - name: person_stateprovince
+      - name: raw__person_stateprovince
         description: Table with details of addresses state
 
-      - name: person_countryregion
+      - name: raw__person_countryregion
         description: Table with details of state's country
 
-      - name: sales_salesorderheadersalesreason
+      - name: raw__sales_salesorderheadersalesreason
         description: Table that make many-to-many relationship for sales reasons
 
-      - name: sales_salesreason
+      - name: raw__sales_salesreason
         description: Table with sales orders reasons
 
-      - name: production_product
+      - name: raw__production_product
         description: Table with sales orders products

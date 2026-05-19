@@ -1,7 +1,7 @@
 with
     source_sales_order_detail as (
         select *
-        from {{ source('crm', 'sales_salesorderdetail') }}
+        from {{ source('crm', 'raw__sales_salesorderdetail') }}
     )
 
     , rename as (
