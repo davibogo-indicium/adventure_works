@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_dates
+    description: >
+      This model generates a continuous date dimension based on the minimum and maximum 
+      sales order dates from the staging model. It creates 
+      a full calendar of dates and enriches them with year, quarter, month, month name, and day 
+      fields for time-based analysis.
+    columns:
+      - name: pk_date
+        description: "Primary key representing each calendar date."
+        tests:
+          - not_null
+          - unique
+      - name: year
+        description: "The year extracted from pk_date."
+      - name: quarter
+        description: "The quarter of the year (e.g., 'Q1', 'Q2') corresponding to pk_date."
+      - name: month
+        description: "The numeric month extracted from pk_date."
+      - name: month_nm
+        description: "The abbreviated name of the month (e.g., 'Jan', 'Feb') corresponding to pk_date."
+      - name: day
+        description: "The day of the month extracted from pk_date."

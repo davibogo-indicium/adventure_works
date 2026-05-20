@@ -6,33 +6,96 @@ sources:
     tables:
       - name: raw__sales_salesorderdetail
         description: Table with sales orders products details for each sale order
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments: 
+                combination_of_columns: [salesorderid, salesorderdetailid]
+        columns:
+          - name: salesorderid
+            tests: [not_null]
+          - name: salesorderdetailid
+            tests: [not_null]
 
       - name: raw__sales_salesorderheader
         description: Table with sales orders main data
+        columns:
+          - name: salesorderid
+            tests:
+              - not_null
+              - unique
 
       - name: raw__sales_customer
         description: Table with centralized customer data
-
-      - name: raw__person_person
+        columns:
+          - name: customerid
+            tests:
+              - not_null
+              - unique
+ 
+      - name: raw__s3_person_person
         description: Table with details of customer person
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
 
       - name: raw__sales_creditcard
         description: Table with details of person's credit cards
+        columns:
+          - name: creditcardid
+            tests:
+              - not_null
+              - unique
 
       - name: raw__person_address
         description: Table with details of sales orders addresses
+        columns:
+          - name: addressid
+            tests:
+              - not_null
+              - unique
 
       - name: raw__person_stateprovince
         description: Table with details of addresses state
+        columns:
+          - name: stateprovinceid
+            tests:
+              - not_null
+              - unique
 
       - name: raw__person_countryregion
         description: Table with details of state's country
+        columns:
+          - name: countryregioncode
+            tests:
+              - not_null
+              - unique
 
       - name: raw__sales_salesorderheadersalesreason
         description: Table that make many-to-many relationship for sales reasons
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments: 
+                combination_of_columns: [salesorderid, salesreasonid]
+        columns:
+          - name: salesorderid
+            tests: [not_null]
+          - name: salesreasonid
+            tests: [not_null]
 
       - name: raw__sales_salesreason
         description: Table with sales orders reasons
+        columns:
+          - name: salesreasonid
+            tests:
+              - not_null
+              - unique
 
       - name: raw__production_product
         description: Table with sales orders products
+        columns:
+          - name: productid
+            tests:
+              - not_null
+              - unique

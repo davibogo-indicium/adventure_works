@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_sales_order
+    description: >
+      This model builds the sales order fact table, combining sales order headers, order details, 
+      customer, credit card, and location information. It contains detailed financial and operational 
+      metrics for each sales transaction.
+    columns:
+      - name: fk_sales_order_detail
+        description: "Surrogate key identifying the unique combination of sales order and product."
+        tests:
+          - not_null
+          - unique
+      - name: fk_address
+        description: "Primary key identifying the sales order record from the ERP system."
+      - name: sales_order_dt
+        description: "Foreign key referring to the salesperson responsible for the sales order."
+      - name: count_sales_order_quantity
+        description: "Surrogate key referring to the customer's location."
+      - name: sum_item_price
+        description: "Foreign key referring to the product sold."
+      - name: sum_item_price_discount
+        description: "Date when the sales order was created."
+      - name: sum_item_quantity
+        description: "Due date for the sales order delivery."

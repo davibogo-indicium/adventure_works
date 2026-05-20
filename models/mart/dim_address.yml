@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_address
+    description: >
+      This model builds a address dimension by enriching address data from city, state/province, 
+      sales territory, and country information.
+    columns:
+      - name: pk_address
+        description: "Primary key of the original address record from the CRM system."
+        tests:
+          - not_null
+          - unique
+      - name: city_name
+        description: "Name of the city for the address."
+      - name: state_name
+        description: "Name of the state or province associated with the address."
+      - name: country_name
+        description: "Country name associated with the address."
