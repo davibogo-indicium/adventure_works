@@ -11,16 +11,16 @@ with
 
     , criar_datas as (
         select
-            row_number() over(order by date_day) as pk_data
-            , cast(date_day as date) as dt_data
+            row_number() over(order by date_day) as pk_date
+            , cast(date_day as date) as dt_date
             , extract(day from date_day) as day
-            , extract(year from date_day) as ano
-            , extract(month from date_day) as mes
+            , extract(year from date_day) as year
+            , extract(month from date_day) as month
             , extract(quarter from date_day) as trimestre
             , case
                 when extract(dow from date_day) in (0, 6) then true
                 else false
-            end as is_final_de_semana
+            end as is_weekend
 
         from date_spine
     )

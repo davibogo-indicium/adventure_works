@@ -1,6 +1,7 @@
 sources:
   - name: crm
     description: Adventure Works CRM system
+    catalog: mesh_prod_db
     schema: raw
 
     tables:

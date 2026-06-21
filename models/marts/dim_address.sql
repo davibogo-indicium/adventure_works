@@ -12,7 +12,7 @@ with
             , ANY_VALUE(country_name) AS country_name
         from dimension_address
         group by
-            pk_sales_order_detail
+            pk_address
     )
 
 select *
