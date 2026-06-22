@@ -7,7 +7,7 @@ models:
       sales territory, and country information.
     columns:
       - name: pk_address
-        description: "Primary key of the original address record from the CRM system."
+        description: "Primary key of the original address record from the ERP system."
         tests:
           - not_null
           - unique

@@ -1,7 +1,7 @@
 with
     source_person as (
         select *
-        from {{ source('crm', 'raw__s3_person_person') }}
+        from {{ source('erp', 'person_person') }}
     )
 
     , rename as (

@@ -1,17 +1,17 @@
 with
     addresses as (
         select *
-        from {{ ref('stg_crm__address') }}
+        from {{ ref('stg_erp__address') }}
     )
 
     , states as (
         select *
-        from {{ ref('stg_crm__state_province') }}
+        from {{ ref('stg_erp__state_province') }}
     )
 
     , countries as (
         select *
-        from {{ ref('stg_crm__country_region') }}
+        from {{ ref('stg_erp__country_region') }}
     )
 
     , addresses_enriched as (

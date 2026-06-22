@@ -1,7 +1,7 @@
 with
     source_state_province as (
         select *
-        from {{ source('crm', 'raw__person_stateprovince') }}
+        from {{ source('erp', 'person_stateprovince') }}
     )
 
     , rename as (

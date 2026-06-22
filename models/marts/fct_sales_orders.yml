@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fct_sales_order
+  - name: fct_sales_orders
     description: >
       This model builds the sales order fact table, combining sales order headers, order details, 
       customer, credit card, and location information. It contains detailed financial and operational 
