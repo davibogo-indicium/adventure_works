@@ -1,7 +1,7 @@
 with
     source_country_region as (
         select *
-        from {{ source('crm', 'raw__person_countryregion') }}
+        from {{ source('erp', 'person_countryregion') }}
     )
 
     , rename as (
