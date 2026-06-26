@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: agg_sales_order_reason
+    description: >
+      This model aggregates sales orders by sales reason, product, location, and date,
+      summarizing key metrics like total orders, quantity, gross, and net sales.
+    columns:
+      - name: sk_sales_order_detail
+        description: "Surrogate key identifying each sales order details."
+        tests:
+          - not_null
+      - name: fk_sales_reason
+        description: "Foreign key referencing the sales reason."
+      - name: fk_address
+        description: "Foreign key referencing the address."
+      - name: sales_order_dt
+        description: "Date of the sales order."
+      - name: total_orders
+        description: "Total number of distinct orders associated with the reason."
+      - name: total_quantity
+        description: "Total quantity of products ordered."
+      - name: total_gross
+        description: "Total gross sales value."
+      - name: total_net
+        description: "Total net sales value."
