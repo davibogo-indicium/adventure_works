@@ -12,7 +12,7 @@ models:
         tests:
           - not_null
           - unique
-      - name: client_name
+      - name: customer_name
         description: "The name of the client from the sale."
       - name: product_name
         description: "The name of the product from the sale."

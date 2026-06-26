@@ -7,10 +7,9 @@ with
     , remove_duplications as (
         select
             sk_sales_order_detail as pk_sales_order_detail
-            , ANY_VALUE(client_name) as client_name
+            , ANY_VALUE(customer_name) as customer_name
             , ANY_VALUE(product_name) as product_name
             , ANY_VALUE(card_type) as card_type
-            , ANY_VALUE(sales_reason_name) as sales_reason_name
             , ANY_VALUE(sales_order_status) as sales_order_status
         from dimension_sales_orders
         group by

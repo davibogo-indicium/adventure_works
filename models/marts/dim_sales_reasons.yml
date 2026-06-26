@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_sales_reason
+    description: >
+      This model builds the sales reason dimension, providing information about the reasons why 
+      sales orders were placed. It combines sales reason metadata with their corresponding sales 
+      orders.
+    columns:
+      - name: pk_sales_reason
+        description: "Primary key identifying the sales reason from the ERP system."
+        tests:
+          - not_null
+          - unique
+      - name: sales_reason_name
+        description: "Name of the sales reason."
+      - name: sales_reason_type
+        description: "Type/category of the sales reason."

@@ -7,7 +7,7 @@ with
     , rename as (
         select
             cast(businessentityid as int) as pk_person
-            , firstname || ' ' || middlename || ' ' || lastname as person_name
+            , firstname || ' ' || middlename || ' ' || lastname as full_name
         from source_person
     )
 
