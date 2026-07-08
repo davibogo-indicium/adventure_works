@@ -9,7 +9,7 @@ with
             sk_sales_order_detail as fk_sales_order_detail
             , fk_address
             , sales_order_dt
-            , COUNT(pk_sales_order_header) as count_sales_order_quantity
+            , pk_sales_order_header
             , SUM(item_price) as sum_item_price
             , SUM(item_price_discount) as sum_item_price_discount
             , SUM(item_quantity) as sum_item_quantity
@@ -18,6 +18,7 @@ with
             sk_sales_order_detail
             , fk_address
             , sales_order_dt
+            , pk_sales_order_header
     )
 
 select *
