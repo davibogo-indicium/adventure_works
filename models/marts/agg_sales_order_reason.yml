@@ -6,8 +6,15 @@ models:
       This model aggregates sales orders by sales reason, product, location, and date,
       summarizing key metrics like total orders, quantity, gross, and net sales.
     columns:
-      - name: sk_sales_order_detail
-        description: "Surrogate key identifying each sales order details."
+      - name: sk_reason_order_reason
+        description: "Surrogate key identifying each aggegation for sales order reasons."
+        tests:
+          - unique
+          - not_null
+      - name: pk_sales_order_header
+        description: "Identifier for unique sales orders."
+      - name: fk_sales_order_detail
+        description: "Foreign key identifying each sales order details."
         tests:
           - not_null
       - name: fk_sales_reason
