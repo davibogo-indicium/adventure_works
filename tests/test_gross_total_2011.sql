@@ -5,12 +5,12 @@
 
 with filtered_orders as (
     select 
-        sum(gross_total) as period_gross_total
+        sum(gross_revenue) as period_gross_revenue
     from {{ ref('int_sales_orders') }}
     where extract(year from sales_order_dt) = 2011
 )
 
 select 
-    period_gross_total
+    period_gross_revenue
 from filtered_orders
-where period_gross_total not between (12646112.16*0.99) and (12646112.16*1.01)
+where period_gross_revenue not between (12646112.16*0.99) and (12646112.16*1.01)
