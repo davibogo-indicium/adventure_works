@@ -10,9 +10,11 @@ with
             , fk_address
             , sales_order_dt
             , pk_sales_order_header
-            , SUM(item_price) as sum_item_price
-            , SUM(item_price_discount) as sum_item_price_discount
-            , SUM(item_quantity) as sum_item_quantity
+            , sum(item_price) as sum_item_price
+            , sum(item_price_discount) as sum_item_price_discount
+            , sum(item_quantity) as sum_item_quantity
+            , sum(gross_revenue) as sum_gross_revenue
+            , sum(liquid_revenue) as sum_liquid_revenue
         from fact_sales_orders
         group by
             sk_sales_order_detail

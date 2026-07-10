@@ -6,7 +6,7 @@ with
 
     , rename as (
         select
-            cast(countryregioncode as int) as pk_country
+            countryregioncode as pk_country
             , name as country_name
         from source_country_region
     )

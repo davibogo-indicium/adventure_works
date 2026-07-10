@@ -6,18 +6,21 @@ with
 
     , sales_reason_aggregated as (
         select
-            sk_sales_order_detail
+            sk_sales_order_detail as fk_sales_order_detail
+            , pk_sales_order_header
             , fk_sales_reason
             , fk_address
             , sales_order_dt
-            , count(distinct pk_sales_order_header) as total_orders
-            , sum(item_quantity) as total_quantity
-            , sum(gross_total) as total_gross
-            , sum(net_total) as total_net
+            , sum(item_price) as item_price
+            , sum(item_price_discount) as item_price_discount
+            , sum(item_quantity) as item_quantity
+            , sum(gross_revenue) as gross_revenue
+            , sum(liquid_revenue) as liquid_revenue
         from sales_order_reason_agg
         where fk_sales_reason is not null
         group by 
             sk_sales_order_detail
+            , pk_sales_order_header
             , fk_sales_reason
             , fk_address
             , sales_order_dt
@@ -25,15 +28,23 @@ with
 
     , sales_order_reason_gen_unique_key as (
         select
-            {{ dbt_utils.generate_surrogate_key(['fk_sales_reason', 'fk_address', 'sk_sales_order_detail', 'sales_order_dt']) }} as sk_reason_address_details
+            {{ dbt_utils.generate_surrogate_key([
+                'fk_sales_reason', 
+                'pk_sales_order_header', 
+                'fk_address', 
+                'fk_sales_order_detail', 
+                'sales_order_dt'
+            ]) }} as sk_reason_order_reason
+            , pk_sales_order_header
             , fk_sales_reason
             , fk_address
-            , sk_sales_order_detail
+            , fk_sales_order_detail
             , sales_order_dt
-            , total_orders
-            , total_quantity
-            , total_gross
-            , total_net
+            , item_price
+            , item_price_discount
+            , item_quantity
+            , gross_revenue
+            , liquid_revenue
         from sales_reason_aggregated
     )
 

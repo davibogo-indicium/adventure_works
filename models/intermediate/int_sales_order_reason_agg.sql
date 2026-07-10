@@ -23,8 +23,8 @@ with
             , sales_orders.item_price
             , sales_orders.item_price_discount
             , sales_orders.item_quantity
-            , sales_orders.gross_total
-            , sales_orders.net_total
+            , sales_orders.gross_revenue
+            , sales_orders.liquid_revenue
         from sales_orders
         left join sales_reasons on sales_orders.pk_sales_order_header = sales_reasons.fk_sales_order_header
     )

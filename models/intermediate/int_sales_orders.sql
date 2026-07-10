@@ -37,7 +37,15 @@ with
             , products.product_name
             , cards.card_type
             , sales_orders_headers.sales_order_dt
-            , sales_orders_headers.sales_order_status
+            , case sales_orders_headers.sales_order_status
+                when 1 then '1. Em Processo'
+                when 2 then '2. Aprovado'
+                when 3 then '3. Retido'
+                when 4 then '4. Rejeitado'
+                when 5 then '5. Enviado'
+                when 6 then '6. Cancelado'
+                else 'Desconhecido'
+            end as sales_order_status
             , sales_orders_headers.pk_sales_order_header
             , sales_orders_headers.fk_address
             , sales_orders_details.item_price
@@ -63,8 +71,8 @@ with
             , item_price
             , item_price_discount
             , item_quantity
-            , item_price * item_quantity as gross_total
-            , item_price * (1 - item_price_discount) * item_quantity as net_total
+            , item_price * item_quantity as gross_revenue
+            , item_price * (1 - item_price_discount) * item_quantity as liquid_revenue
         from sales_order_enriched
     )
 
